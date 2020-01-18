@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Lab 2 | COMP1073 Client-Side JavaScript</title>
+    
+</head>
+
+<body>
+    <div class= "container">
+    <h1>Airports</h1>
+    <table class= "table">
+      <thead class="thead-dark">
+            <tr>
+                <th scope = "col">Code</th>
+                <th scope = "col">Airports</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+          </tbody>
+    </table>
+</div>
+	 <ul>
+        <!-- <li>Beijing Capital International, https://goo.gl/maps/iPe5fAqzq8C2 PEK</li>
+        <li>John F Kennedy International, https://goo.gl/maps/JWwABmA3MBS2 JFK</li>
+        <li>Lester B. Pearson International, https://goo.gl/maps/Ypu1dJLsnQu YYZ</li>
+        <li>London Heathrow, https://goo.gl/maps/TFx8SrATdYr LHR</li>
+        <li>Tokyo Haneda International, https://goo.gl/maps/5UxH2TxbRtT2 HND</li>  -->
+    </ul>
+</body>
+<script>
+    var airportList = document.querySelector('body td');
+    airportList.innerHTML = '';
+    var airports = ['Beijing Capital International, https://goo.gl/maps/iPe5fAqzq8C2 PEK',
+                    'John F Kennedy International, https://goo.gl/maps/JWwABmA3MBS2 JFK',
+                    'Lester B. Pearson International, https://goo.gl/maps/Ypu1dJLsnQu YYZ',
+                    'London Heathrow, https://goo.gl/maps/TFx8SrATdYr LHR',
+                    'Tokyo Haneda International, https://goo.gl/maps/5UxH2TxbRtT2 HND'];
+
+    for(var i = 0; i < airports.length; i++) {
+        var input = airports[i];
+        
+        // Put your code here inside this loop
+
+   // getting airport name
+    let commaIndex =  input.indexOf(',');
+    //console.log(commaIndex);
+    let airportName = input.slice(0, commaIndex);
+    //console.log(airportName);
+
+   // getting airport  number 
+    let airportCodeIndex = input.slice(- 3);
+    //console.log(airportCodeIndex);
+
+// getting airport  URL
+let airportURL = input.slice(commaIndex + 1, -3).trim();
+//console.log(airportURL);
+
+//  create an anchor link
+  let hyperlink = `<a href ="${airportURL}">${airportCodeIndex} </a>`;
+
+        var result = hyperlink + airportName;
+        var listItem = document.createElement('p');
+        listItem.innerHTML = result;
+        airportList.appendChild(listItem);
+    }
+
+</script>
+
+</html>
